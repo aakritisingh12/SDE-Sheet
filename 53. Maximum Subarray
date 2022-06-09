@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int maxsum = INT_MIN, sum;
+        int n = nums.size();
+        int i=0;
+        while(i<n) {
+            sum = 0;
+            while(sum >= 0 && i<n) {
+                sum += nums[i];
+                maxsum = max(maxsum, sum);
+                // cout<<sum<<" "<<maxsum<<"\n";
+                i++;
+            }
+        }
+        return maxsum;
+    }
+};
