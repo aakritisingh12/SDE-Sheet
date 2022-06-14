@@ -1,0 +1,26 @@
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        int n = nums.size();
+        if(n <= 1)
+            return;
+        int a,b,c = -1;
+        for(int i=n-1; i>0; i--)   {
+            if(nums[i] > nums[i-1]) {
+                a = i-1;
+                b=i;
+                c=1;
+                break;
+            }
+        }
+        if(c==-1)   {
+            sort(nums.begin(),nums.end());
+            return;
+        }
+        // cout<<nums[a]<<" ";
+        sort(nums.begin()+b, nums.end());
+        int up = upper_bound(nums.begin()+b, nums.end(), nums[a])-nums.begin();
+        // cout<<up;
+        swap(nums[a],nums[up]);
+    }
+};
